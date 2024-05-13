@@ -28,7 +28,11 @@ function EarthComponent() {
         };
     }, []); // Empty dependency array to run once after initial render
 
-    return <div id="map"></div>;
+    return (
+        <div>
+            <div id="map"></div>
+        </div>
+    );
 }
 
 export default EarthComponent;
