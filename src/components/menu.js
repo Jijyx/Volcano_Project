@@ -11,41 +11,14 @@ import countriesAndTimezones from "countries-and-timezones";
 
 import './menu.css';
 
-function MenuFilter() {
-    const [visible, setVisible] = useState(false)
+function MenuFilter({ sendChanges }) {
+    const [visible, setVisible] = useState(false);
+    const [selectedContinent, setSelectedContinent] = useState([]);
+    const [selectedCountry, setSelectedCountry] = useState([]);
+    const [selectedVolcanoType, setSelectedVolcanoType] = useState([]);
+    const [selectedFilterBy, setSelectedFilterBy] = useState("");
+
     const [selected, setSelected] = React.useState([]);
-
-
-    const flags = {
-        de: cif.cifDe,
-        es: cif.cifEs,
-        gb: cif.cifGb,
-        pl: cif.cifPl,
-        us: cif.cifUs
-    }
-
-    // const countries = [
-    //     {
-    //         value: 'pl',
-    //         label: 'Poland',
-    //     },
-    //     {
-    //         value: 'de',
-    //         label: 'Germany',
-    //     },
-    //     {
-    //         value: 'us',
-    //         label: 'United States',
-    //     },
-    //     {
-    //         value: 'es',
-    //         label: 'Spain',
-    //     },
-    //     {
-    //         value: 'gb',
-    //         label: 'United Kingdom',
-    //     },
-    // ]
 
     const continents = [
         {
@@ -85,9 +58,7 @@ function MenuFilter() {
     const countries = Object.values(countriesAndTimezones.getAllCountries()).map(country => ({
         value: country.id,
         label: country.name,
-        code: countriesAndTimezones.getCountry(country.id).isoAlpha2,
     }));
-
 
     return (
         <>
@@ -117,10 +88,14 @@ function MenuFilter() {
                                         virtualScroller
                                         options={continents}
                                         optionsStyle="text"
+                                        value={selectedContinent}
+                                        onChange={(value) => {
+                                            setSelectedContinent(value);
+                                        }}
                                         optionsTemplate={
                                             (option) => (
                                                 <div className="d-flex">
-                                                    <CIcon className="me-3" icon={flags[option.code]} size="xl" /> {option.label}
+                                                    <CIcon className="me-3" size="xl" /> {option.label}
                                                 </div>
                                             )
                                         }
@@ -131,10 +106,14 @@ function MenuFilter() {
                                         label="Select Country"
                                         virtualScroller
                                         options={countries}
+                                        value={selectedCountry}
+                                        onChange={(value) => {
+                                            setSelectedCountry(value);
+                                        }}
                                         optionsGroupsTemplate={
                                             (option) => (
                                                 <div className="d-flex align-items-center">
-                                                    <CIcon className="me-3" icon={flags[option.code]} size="xl" /> {option.label}
+                                                    <CIcon className="me-3" size="xl" /> {option.label}
                                                 </div>
                                             )
                                         }
@@ -147,10 +126,14 @@ function MenuFilter() {
                                             { label: 'Strato-volcano', value: '1' },
                                             { label: 'Regular', value: '2' },
                                         ]}
+                                        value={selectedVolcanoType}
+                                        onChange={(value) => {
+                                            setSelectedVolcanoType(value);
+                                        }}
                                         optionsGroupsTemplate={
                                             (option) => (
                                                 <div className="d-flex align-items-center">
-                                                    <CIcon className="me-3" icon={flags[option.code]} size="xl" /> {option.label}
+                                                    <CIcon className="me-3" size="xl" /> {option.label}
                                                 </div>
                                             )
                                         }
@@ -168,6 +151,10 @@ function MenuFilter() {
                                                 "Height 🡫 (dsc)",
                                             ]
                                         }
+                                        value={selectedFilterBy}
+                                        onChange={(e) => {
+                                            setSelectedFilterBy(e.target.value);
+                                        }}
                                     />
                                 </CCol>
                             </CRow>
@@ -178,7 +165,11 @@ function MenuFilter() {
                     <CButton color="secondary" onClick={() => setVisible(false)}>
                         Close
                     </CButton>
-                    <CButton color="primary" onClick={() => setVisible(false)}>Save changes</CButton>
+                    <CButton color="primary" onClick={() => {
+                        setVisible(false); sendChanges(selectedContinent, selectedCountry, selectedVolcanoType
+                            , selectedFilterBy
+                        );
+                    }}>Save changes</CButton>
                 </CModalFooter>
             </CModal>
         </>
