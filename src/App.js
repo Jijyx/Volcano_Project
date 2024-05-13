@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import EarthComponent from './components/earth';
 import MenuFilter from './components/menu';
