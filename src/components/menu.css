@@ -1,0 +1,63 @@
+.menu-filter-button {
+    display: flex;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 10vh;
+    margin-left: 5vw;
+    position: absolute;
+    z-index: 999999;
+}
+
+.menu-layout-one {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    margin-left: 1.5vw;
+    margin-top: 1vh;
+}
+
+.menu-title {
+    color: white;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-top: 1vh;
+}
+
+.option {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1vh;
+    gap: .5vw;
+    user-select: none;
+}
+
+.checkbox-filter {
+    margin-left: 2vw;
+    margin-top: 1vh;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.checkbox-filter[type="checkbox"] {
+    width: 1.5em;
+    height: 1.5rem;
+    accent-color: #5EFF5A;
+}
+
+
+.label-checkbox {
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+}
