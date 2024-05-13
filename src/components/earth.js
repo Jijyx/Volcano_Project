@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import './earth.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '@coreui/coreui-pro/dist/css/coreui.min.css'
+
 import L from "leaflet";
 
 function EarthComponent() {
