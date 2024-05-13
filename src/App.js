@@ -2,8 +2,8 @@ import './App.css';
 import EarthComponent from './components/earth';
 import MenuFilter from './components/menu';
 
-const sendChanges = (a,b,c,d) => {
-  console.log(a,b,c,d);
+const sendChanges = (continentsList,countriesList,volcanoType, filterBy) => {
+  console.log(continentsList,countriesList,volcanoType,filterBy);
 }
 
 function App() {
